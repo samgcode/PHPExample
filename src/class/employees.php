@@ -22,7 +22,7 @@
 
         // GET ALL
         public function getEmployees(){
-            $sqlQuery = "SELECT id, name, email, age, designation, created FROM " . $this->db_table . "";
+            $sqlQuery = "SELECT * FROM " . $this->db_table;
             $stmt = $this->conn->prepare($sqlQuery);
             $stmt->execute();
             return $stmt;
@@ -30,18 +30,7 @@
 
         // GET BY ID
         public function getSingleEmployee(){
-            $sqlQuery = "SELECT
-                        id, 
-                        name, 
-                        email, 
-                        age, 
-                        designation, 
-                        created
-                      FROM
-                        ". $this->db_table ."
-                    WHERE 
-                       id = ?
-                    LIMIT 0,1";
+            $sqlQuery = "SELECT * FROM ". $this->db_table ." WHERE id = ? LIMIT 0,1";
 
             $stmt = $this->conn->prepare($sqlQuery);
 
@@ -60,8 +49,7 @@
 
         // CREATE
         public function createEmployee(){
-            $sqlQuery = "INSERT INTO
-                        ". $this->db_table ."
+            $sqlQuery = "INSERT INTO ". $this->db_table ."
                     SET
                         name = :name, 
                         email = :email, 
@@ -94,8 +82,7 @@
 
         // UPDATE
         public function updateEmployee(){
-            $sqlQuery = "UPDATE
-                        ". $this->db_table ."
+            $sqlQuery = "UPDATE ". $this->db_table ."
                     SET
                         name = :name, 
                         email = :email, 

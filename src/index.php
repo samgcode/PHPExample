@@ -1,28 +1,15 @@
-<?php
-
-echo "Hello from the docker yooooo container";
-
-$mysqli = new mysqli("db", "root", "l3tm31n", "company1");
-
-$sql = 'SELECT * FROM people';
-
-if ($result = $mysqli->query($sql)) {
-    while ($data = $result->fetch_object()) {
-        $users[] = $data;
-    }
-
-    if($users) {
-        foreach ($users as $user) {
-            echo "<br>";
-            echo "User: " . $user->name . " id: " . $user->id;
-            echo "<br>";
-        }
-    } else {
-        $sql = "INSERT INTO people (name) VALUES('sam')";
-        $result = $mysqli->query($sql);
-        $sql = "INSERT INTO people (name) VALUES('cam')";
-        $result = $mysqli->query($sql);
-        $sql = "INSERT INTO people (name) VALUES('jam')";
-        $result = $mysqli->query($sql);
-    }
-}
+<html>
+    <head>
+        <link rel="stylesheet" href="./css/styles.css">
+    </head>
+    <body>
+        <form action="/validate.php" method="post">
+            <label for="name">Name:</label>
+            <input class="input" type="text" name="name" placeholder="Enter name"><br>
+            <label for="email">Email:</label>
+            <input class="input" type="text" name="email" placeholder="Enter email"><br>
+            <label for="password">Password:</label>
+            <input class="input" type="password" name="password" placeholder="Enter password"><br>
+        </form>
+    </body>
+</html>
